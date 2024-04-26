@@ -1,5 +1,7 @@
 #include "../inc/philosophers.h"
 
+
+//AI generated
 void *safe_malloc(size_t size)
 {
 	void *ptr;
@@ -12,3 +14,4 @@ void *safe_malloc(size_t size)
 	}
 	return (ptr);
 }
+
