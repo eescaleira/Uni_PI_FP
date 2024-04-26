@@ -18,10 +18,13 @@
 typedef struct s_store{
 	struct s_store	*previous;
 	char			*name;
+	long long int 	id;
 	int 			employ_count;
+	bool			is_active;
 	struct s_store	*next;
 }		t_store;
 
+t_store *store;
 
 /* main function */
 int		main();
@@ -30,7 +33,14 @@ int		main();
 char *mkrndstr(size_t length);
 int random_number(int min_num, int max_num);
 
+/* menu prints */
+void print_main_menu();
+
 /* suport funcs */
 void *safe_malloc(size_t size);
+void input_validation(int *i, int max, int min);
+
+/* exit funcs */
+void exit_message(char *message, int status);
 
 #endif

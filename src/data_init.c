@@ -24,11 +24,11 @@ int random_number(int min_num, int max_num)
 // source: https://codereview.stackexchange.com/questions/29198/random-string-generator-in-c
 char *mkrndstr(size_t length) { // const size_t length, supra
 
-	static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.-#'?!"; // could be const
+	static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // could be const
 	char *randomString;
 
 	if (length) {
-	    randomString = malloc(length +1); // sizeof(char) == 1, cf. C99
+	    randomString = safe_malloc(length +1); // sizeof(char) == 1, cf. C99
 
 	    if (randomString) {
 	        int l = (int) (sizeof(charset) -1); // (static/global, could be const or #define SZ, would be even better)
@@ -41,6 +41,5 @@ char *mkrndstr(size_t length) { // const size_t length, supra
 	        randomString[length] = '\0';
 	    }
 	}
-
 	return randomString;
 }
