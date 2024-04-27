@@ -2,7 +2,12 @@ NAME = store_manager
 
 CC = cc 
 FLAGS = -Wall -Wextra -Werror
-SRC = main.c 
+SRC = main.c \
+		data_innit.c \
+		exit_funcs.c \
+		menu_input_hand.c \
+		menu_print.c \
+		suport_funcs.c
 		 
 
 SRC_PATH = ./src/

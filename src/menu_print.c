@@ -39,6 +39,6 @@ void print_menu_4(){
 	printf("4. Print all inactive stores\n");
 	printf("5. Print all with less than a number of employees\n");
 	printf("5. Print all with less more a number of employees\n");
-	printf("5. Print all stores\n");
-	printf("6. <- Go Back\n"); // redirect to main_menu
+	printf("6. Print all stores\n");
+	printf("7. <- Go Back\n"); // redirect to main_menu
 }
