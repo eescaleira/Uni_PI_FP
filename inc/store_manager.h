@@ -37,12 +37,13 @@ int random_number(int min_num, int max_num);
 void main_menu_handle();
 void menu_1_handle();
 void menu_2_handle();
+void menu_3_handle();
 
 /* menu prints */
 void print_main_menu();
+void print_menu_1();
 void print_menu_2();
 void print_menu_3();
-void print_menu_4();
 
 /* suport funcs */
 void *safe_malloc(size_t size);

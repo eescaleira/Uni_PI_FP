@@ -36,7 +36,7 @@ void main_menu_handle(){
 
 void menu_1_handle(){ // create func
 	int i = -1;
-	print_main_menu();
+	print_menu_1();
 	input_validation(&i, 6, 1);// define limits
 	switch (i){
 		case 1:
@@ -46,15 +46,21 @@ void menu_1_handle(){ // create func
 			rmv_store_id(); // create func
 			break;
 		case 3:
-			remove_store(); // create func
+			remove_active_store(); // create func
 			break;
 		case 4:
-			print_all_stores(); // create func
+			print_inactive_stores(); // create func
 			break;
 		case 5:
-			print_selected_store(); // create func
+			rmv_w_less_employ_store(); // create func
 			break;
 		case 6:
+			rmv_w_more_employ_store(); // create func
+			break;
+		case 7:
+			rmv_all_stores();
+			break;
+		case 8:
 			system("clear");
 			main_menu_handle();
 			break;
@@ -65,7 +71,7 @@ void menu_1_handle(){ // create func
 
 void menu_2_handle(){
 	int i = -1;
-	print_main_menu();
+	print_menu_2();
 	input_validation(&i, 6, 1);
 	switch (i){
 		case 1:
@@ -93,7 +99,7 @@ void menu_2_handle(){
 
 void menu_3_handle(){
 	int i = -1;
-	print_main_menu();
+	print_menu_3();
 	input_validation(&i, 6, 1);
 	switch (i){
 		case 1:

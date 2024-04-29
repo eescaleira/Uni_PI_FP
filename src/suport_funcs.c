@@ -14,6 +14,7 @@ void *safe_malloc(size_t size)
 	}
 	return (ptr);
 }
+
 void input_validation(int *i, int max, int min){
 	while (i > max || i < min){
 		scanf("%i", i);

@@ -9,19 +9,19 @@ void print_main_menu(){
 	printf("5. Exit\n");
 }
 
-void print_menu_2(){
+void print_menu_1(){
 	printf("Please select an option:\n");
 	printf("1. Remove a store by name\n");
 	printf("2. Remove a store by ID\n");
 	printf("3. Remove all active stores\n");
 	printf("4. Remove all inactive stores\n");
 	printf("5. Remove all with less than a number of employees\n");
-	printf("5. Remove all with less more a number of employees\n");
-	printf("5. Remove all stores\n");
-	printf("6. <- Go Back\n"); // redirect to main_menu
+	printf("6. Remove all with more than a number of employees\n");
+	printf("7. Remove all stores\n");
+	printf("8. <- Go Back\n"); // redirect to main_menu
 }
 
-void print_menu_3(){
+void print_menu_2(){
 	printf("Please select an option:\n");
 	printf("1. Default\n");
 	printf("2. Alphabetical order\n");
@@ -31,7 +31,7 @@ void print_menu_3(){
 	printf("6. <- Go Back\n"); // redirect to main_menu
 }
 
-void print_menu_4(){
+void print_menu_3(){
 	printf("Please select an option:\n");
 	printf("1. Print a store by name\n");
 	printf("2. Print a store by ID\n");
