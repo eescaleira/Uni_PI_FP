@@ -40,9 +40,11 @@ void menu_1_handle(){ // create func
 	input_validation(&i, 6, 1);// define limits
 	switch (i){
 		case 1:
+			//ordenar por ordem alfabetica
 			rmv_store_name(); // create func
 			break;
 		case 2:
+			// ordenar por id
 			rmv_store_id(); // create func
 			break;
 		case 3:

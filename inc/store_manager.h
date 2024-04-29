@@ -24,7 +24,7 @@ typedef struct s_store{
 	struct s_store	*next;
 }		t_store;
 
-t_store *store;
+t_store *store = NULL;
 
 /* main function */
 int		main();
@@ -48,6 +48,10 @@ void print_menu_3();
 /* suport funcs */
 void *safe_malloc(size_t size);
 void input_validation(int *i, int max, int min);
+void get_store_name(t_store *new_store);
+void get_store_id(t_store *new_store);
+void get_store_employ(t_store *new_store);
+void get_store_state(t_store *new_store);
 
 /* exit funcs */
 void exit_message(char *message, int status);
