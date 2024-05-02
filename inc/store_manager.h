@@ -56,4 +56,10 @@ void get_store_state(t_store *new_store);
 /* exit funcs */
 void exit_message(char *message, int status);
 
+t_store *alphabetic_order();
+t_store *alphabetic_order_reverse();
+t_store *id_order();
+t_store *employ_count_order();
+t_store *employ_count_order_reverse();
+
 #endif
