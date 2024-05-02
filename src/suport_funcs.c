@@ -19,6 +19,35 @@ void input_validation(int *i, int max, int min){
 	}
 }
 
+int get_element_count(){
+	t_store *temp = store;
+	int count = 0;
+	while (NULL != temp){
+		count++;
+		temp = temp->next;
+	}
+	return count;
+}
+
+t_store *get_elemnet_by_index(int index){
+	t_store *temp = store;
+	int i = 0;
+	while (NULL != temp){
+		if(i == index)
+			return temp;
+		temp = temp->next;
+		i++;
+	}
+	return NULL;
+}
+
+t_store *get_last_store(t_store *store){
+	t_store *temp = store;
+	while (NULL != temp->next)
+		temp = temp->next;
+	return temp;
+}
+
 //ai generated
 void get_store_name(t_store *new_store){
 	char *name;
@@ -29,16 +58,18 @@ void get_store_name(t_store *new_store){
 
 //ai generated
 void get_store_id(t_store *new_store){
-	long long int id;
+	long long int id = 0;
 	printf("Please enter the store id: ");
-	scanf("%lli", id);
+	while(id <= 0)
+		scanf("%lli", id);
 	store->id = id;
 }
 
 void get_store_employ(t_store *new_store){
-	int employ;
+	int employ = 0;
 	printf("Please enter the number of employees: ");
-	scanf("%i", employ);
+	while(employ <= 0)
+		scanf("%i", employ);
 	store->employ_count = employ;
 }
 

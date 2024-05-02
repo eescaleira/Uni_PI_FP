@@ -4,16 +4,14 @@
  #include <unistd.h>
  #include <stddef.h>
  #include <stdlib.h>
- #include <pthread.h>
  #include <string.h>
  #include <limits.h>
  #include <ctype.h>
- #include <string.h>
  #include <stdbool.h>
  #include <stdio.h>
- #include <fcntl.h>
- #include <sys/types.h>
  #include <sys/wait.h>
+ #include <sys/types.h>
+ #include <fcntl.h>
 
 typedef struct s_store{
 	struct s_store	*previous;
@@ -48,6 +46,9 @@ void print_menu_3();
 /* suport funcs */
 void *safe_malloc(size_t size);
 void input_validation(int *i, int max, int min);
+int get_element_count();
+t_store *get_elemnet_by_index(int index);
+t_store *get_last_store(t_store *store);
 void get_store_name(t_store *new_store);
 void get_store_id(t_store *new_store);
 void get_store_employ(t_store *new_store);

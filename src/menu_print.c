@@ -42,3 +42,4 @@ void print_menu_3(){
 	printf("6. Print all stores\n");
 	printf("7. <- Go Back\n"); // redirect to main_menu
 }
+

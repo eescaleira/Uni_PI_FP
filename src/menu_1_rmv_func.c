@@ -3,7 +3,7 @@
 // ai generated help
 int rmv_store_name(){
 	char name[100];
-	t_store *temp = NULL;
+	t_store *temp = alphabetic_order();;
 	printf("Enter the name of the store you want to remove: ");
 	scanf("%s", name);
 	if ((temp = store_name_exists(name)) != NULL/* criar funcao para escolher algoritmo usado */){// try to print store before removing and asking if sure
