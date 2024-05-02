@@ -7,7 +7,7 @@ void *safe_malloc(size_t size)
 
 	ptr = malloc(size);
 	if (!ptr)
-		exit_message("Error: malloc failed\n", NULL, -1);
+		exit_message("Error: malloc failed\n", -1);
 	return (ptr);
 }
 
@@ -19,8 +19,8 @@ void input_validation(int *i, int max, int min){
 	}
 }
 
-int get_element_count(){
-	t_store *temp = store;
+int get_element_count(t_store *list){
+	t_store *temp = list;
 	int count = 0;
 	while (NULL != temp){
 		count++;
@@ -29,10 +29,10 @@ int get_element_count(){
 	return count;
 }
 
-t_store *get_elemnet_by_index(int index){
-	t_store *temp = store;
+t_store *get_elemnet_by_index(int index, t_store *start, t_store *end){
+	t_store *temp = start;
 	int i = 0;
-	while (NULL != temp){
+	while (NULL != temp || temp != end){
 		if(i == index)
 			return temp;
 		temp = temp->next;

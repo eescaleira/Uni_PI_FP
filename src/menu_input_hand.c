@@ -40,12 +40,10 @@ void menu_1_handle(){ // create func
 	input_validation(&i, 6, 1);// define limits
 	switch (i){
 		case 1:
-			//ordenar por ordem alfabetica
-			rmv_store_name(); // create func
+			rmv_store_name();// rmv a store by name if exist
 			break;
 		case 2:
-			// ordenar por id
-			rmv_store_id(); // create func
+			rmv_store_id();// rmv a store by name if exist
 			break;
 		case 3:
 			remove_active_store(); // create func
@@ -60,7 +58,8 @@ void menu_1_handle(){ // create func
 			rmv_w_more_employ_store(); // create func
 			break;
 		case 7:
-			rmv_all_stores();
+			rmv_all_stores(); // create func
+		
 			break;
 		case 8:
 			system("clear");

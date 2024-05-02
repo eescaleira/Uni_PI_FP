@@ -31,6 +31,11 @@ int		main();
 char *mkrndstr(size_t length);
 int random_number(int min_num, int max_num);
 
+/* list functions */
+
+/* algorythms */
+t_store *store_name_exists(char *name);
+
 /* menu handle */
 void main_menu_handle();
 void menu_1_handle();
@@ -46,8 +51,8 @@ void print_menu_3();
 /* suport funcs */
 void *safe_malloc(size_t size);
 void input_validation(int *i, int max, int min);
-int get_element_count();
-t_store *get_elemnet_by_index(int index);
+int get_element_count(t_store *list);
+t_store *get_elemnet_by_index(int index, t_store *start, t_store *end);
 t_store *get_last_store(t_store *store);
 void get_store_name(t_store *new_store);
 void get_store_id(t_store *new_store);
