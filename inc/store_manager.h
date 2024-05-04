@@ -25,7 +25,10 @@ typedef struct s_store{
 	struct s_store	*next;
 }		t_store;
 
+/* global varaibeles */
+int struct_type = 0;
 t_store *store = NULL;
+t_store *store_array = NULL;
 
 /* main function */
 int		main();

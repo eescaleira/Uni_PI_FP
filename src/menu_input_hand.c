@@ -4,30 +4,33 @@ void main_menu_handle(){
 	int i = -1;
 	print_main_menu();
 	input_validation(&i, 5, 0);
+	system("clear");
 	switch (i){
 		case 0:
-			random_struct_innit();// create func
+			if(struct_type == 1)//ver como vou fazer iniciar random
+				random_struct_innit();// create func
+			else if(struct_type == 2)
+				random_struct_innit_array();// create func
 			system("clear");
 			main_menu_handle();
 			break;
 		case 1:
-			store_innit(); // create func
+			if(struct_type == 1)
+				store_innit(); // create func
+			else if(struct_type == 2)
+				store_innit_array(); // create func
 			break;
 		case 2:
-			system("clear");
 			menu_1_handle();
 			break;
 		case 3:
-			system("clear");
-			menu_2_handle(); // create func
+			menu_2_handle();
 			break;
 		case 4:
-			system("clear");
-			menu_3_handle(); // create func
+			menu_3_handle();
 			break;
 		case 5:
-			system("clear");
-			exit_message("Program terminated by your command!\nGoodbye!", 0);
+			exit_message("Program terminated by your command!\nGoodbye!", 0);//change to clean both structs
 			break;
 		default:
 			break;
@@ -40,26 +43,46 @@ void menu_1_handle(){ // create func
 	input_validation(&i, 6, 1);// define limits
 	switch (i){
 		case 1:
-			rmv_store_name();// rmv a store by name if exist
+			if(struct_type == 1)
+				rmv_store_name();// rmv a store by name if exist
+			else if(struct_type == 2)
+				rmv_store_name_array();// rmv a store by name if exist
 			break;
 		case 2:
-			rmv_store_id();// rmv a store by name if exist
+			if(struct_type == 1)
+				rmv_store_id();// rmv a store by name if exist
+			else if(struct_type == 2)
+				rmv_store_id_array();// rmv a store by name if exist
 			break;
 		case 3:
-			remove_active_store(); 
+			if(struct_type == 1)
+				remove_active_store(); // uses linear search
+			else if(struct_type == 2)
+				remove_active_store_array(); // uses linear search
 			break;
 		case 4:
-			print_inactive_stores();
+			if(struct_type == 1)
+				remove_inactive_stores(); // uses linear search
+			else if(struct_type == 2)
+				remove_inactive_stores_array(); // uses linear search
 			break;
 		case 5:
-			rmv_w_less_employ_store(); 
+			if(struct_type == 1)
+				rmv_w_less_employ_store(); // uses linear search
+			else if(struct_type == 2)
+				rmv_w_less_employ_store_array(); // uses linear search
 			break;
 		case 6:
-			rmv_w_more_employ_store(); 
+			if(struct_type == 1)
+				rmv_w_more_employ_store(); // uses linear search
+			else if(struct_type == 2)
+				rmv_w_more_employ_store_array(); // uses linear search
 			break;
 		case 7:
-			rmv_all_stores();
-		
+			if(struct_type == 1)
+				rmv_all_stores();
+			else if(struct_type == 2)
+				rmv_all_stores_array();
 			break;
 		case 8:
 			system("clear");
@@ -76,10 +99,16 @@ void menu_2_handle(){
 	input_validation(&i, 6, 1);
 	switch (i){
 		case 1:
-			print_all_stores(); // create func
+			if(struct_type == 1)
+				print_all_stores(); // create func
+			else if(struct_type == 2)
+				print_all_stores_array(); // create func
 			break;
 		case 2:
-			print_alphabetic_order(); // create func
+			if(struct_type == 1)
+				print_alphabetic_order(); 
+			else if(struct_type == 2)
+				print_alphabetic_order_array(); // create func
 			break;
 		case 3:
 			print_reverse_alphabetic(); // create func

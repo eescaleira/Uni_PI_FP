@@ -6,7 +6,8 @@ int rmv_store_name(){
 	printf("Enter the name of the store you want to remove: ");
 	scanf("%s", name);
 	system("clear");
-	if ((temp = store_name_exists(name)) != NULL){// try to print store before removing and asking if sure
+	if ((temp = store_name_exists(name)) != NULL){
+		print_store(temp);
 		remove_nodle(temp);
 		printf("Store removed successfully!\n");
 	}
@@ -27,7 +28,8 @@ int rmv_store_id(){
 	while(id <= 0)
 		scanf("%lli", &id);
 	system("clear");
-	if ((temp = store_id_exists(id)) != NULL){// try to print store before removing and asking if sure
+	if ((temp = store_id_exists(id)) != NULL){
+		print_store(temp);
 		remove_nodle(temp);
 		printf("Store removed successfully!\n");
 	}
@@ -44,6 +46,7 @@ int remove_active_store(){ // uses linear search
 	system("clear");
 	for(t_store *temp = store; temp != NULL; temp = temp->next){
 		if(temp->is_active){
+			print_store(temp);
 			remove_nodle(temp);
 			if(!store_removed)
 				store_removed = true;
