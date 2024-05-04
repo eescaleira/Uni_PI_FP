@@ -3,8 +3,12 @@ NAME = store_manager
 CC = cc 
 FLAGS = -Wall -Wextra -Werror
 SRC = main.c \
+		algorythms.c \
 		data_innit.c \
 		exit_funcs.c \
+		menu_1_rmv_func.c \
+		menu_2_print_funcs \
+		menu_3_PRINT_funcs.c \
 		menu_input_hand.c \
 		menu_print.c \
 		suport_funcs.c

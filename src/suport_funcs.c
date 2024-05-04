@@ -81,4 +81,11 @@ void get_store_state(t_store *new_store){
 	store->is_active = state;
 }
 
-
+void print_store(t_store *store){
+	printf("|___________________________|\n");
+	printf("|Store name: %s\|n", store->name);
+	printf("|Store id: %lli|\n", store->id);
+	printf("|Number of employees: %i|\n", store->employ_count);
+	printf("|Store state: %i|\n", store->is_active);
+	printf("|___________________________|\n");
+}

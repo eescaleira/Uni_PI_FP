@@ -46,19 +46,19 @@ void menu_1_handle(){ // create func
 			rmv_store_id();// rmv a store by name if exist
 			break;
 		case 3:
-			remove_active_store(); // create func
+			remove_active_store(); 
 			break;
 		case 4:
-			print_inactive_stores(); // create func
+			print_inactive_stores();
 			break;
 		case 5:
-			rmv_w_less_employ_store(); // create func
+			rmv_w_less_employ_store(); 
 			break;
 		case 6:
-			rmv_w_more_employ_store(); // create func
+			rmv_w_more_employ_store(); 
 			break;
 		case 7:
-			rmv_all_stores(); // create func
+			rmv_all_stores();
 		
 			break;
 		case 8:
