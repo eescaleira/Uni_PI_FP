@@ -5,6 +5,8 @@ void *safe_malloc(size_t size)
 {
 	void *ptr;
 
+	if (NULL == size)
+		return ;	
 	ptr = malloc(size);
 	if (!ptr)
 		exit_message("Error: malloc failed\n", -1);
@@ -50,9 +52,14 @@ t_store *get_last_store(t_store *store){
 
 //ai generated
 void get_store_name(t_store *new_store){
-	char *name;
+	char *name = NULL;
 	printf("Please enter the store name: ");
-	scanf("%s", name);
+	while (NULL != store_name_exists(name))
+	{
+		scanf("%s", name);
+		if (NULL != store_name_exists(name))
+			printf("Store name already exists, please try again!\n");
+	}
 	store->name = name;
 }
 
@@ -60,8 +67,14 @@ void get_store_name(t_store *new_store){
 void get_store_id(t_store *new_store){
 	long long int id = 0;
 	printf("Please enter the store id: ");
-	while(id <= 0)
+	while(id <= 0 && NULL != store_id_exists(id))
+	{
 		scanf("%lli", id);
+		if(id <= 0)
+			printf("Invalid id, please try again!\n");
+		else if(NULL != store_id_exists(id))
+			printf("Id already exists, please try again!\n");
+	}
 	store->id = id;
 }
 
@@ -79,6 +92,34 @@ void get_store_state(t_store *new_store){
 	printf("Please enter the store state: ");
 	scanf("%i", state);
 	store->is_active = state;
+}
+
+//ai generated
+void add_store(t_store *store_new){
+	if(NULL == store_new)
+		return ;
+	if(NULL == store)
+		store = store_new;
+	else{
+		store_new->previous = get_last_store(store);
+		get_last_store(store)->next = store_new;
+	}
+}
+
+void remove_nodle(t_store *rmv_store){
+	if(NULL == store)// case main list is empty
+		return;
+	if(NULL == store->next){ // case element is the only one in the list
+		free(store);
+		store = NULL;
+	}
+	else{
+		if(NULL != rmv_store->previous)
+			rmv_store->previous->next = rmv_store->next;
+		if(NULL != rmv_store->next)
+			rmv_store->next->previous = rmv_store->previous;
+		free(rmv_store);
+	}
 }
 
 void print_store(t_store *store){

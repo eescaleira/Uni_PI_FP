@@ -1,5 +1,50 @@
 #include "../inc/store_manager.h"
 
+t_store *store_innit(){
+	t_store *store_new = safe_malloc(sizeof(t_store));
+	get_store_name(store_new);
+	get_store_id(store_new);
+	get_store_state(store_new);
+	get_store_employ(store_new);
+	store->previous = NULL;
+	store_new->next = NULL;
+	add_store(store_new);
+}
+
+t_store *new_random_store(){
+	t_store *store_new = safe_malloc(sizeof(t_store));
+	while(NULL != store_name_exists(store_new->name = mkrndstr(random_number(5, 10)))); // will work?
+	while(NULL != store_id_exists(store_new->id = random_number(1, INT_MAX - 10)));  // will work?
+	store_new->employ_count = random_number(1,INT_MAX - 10);
+	store_new->is_active = random_number(0, 1);
+	store_new->next = NULL;
+	store_new->previous = NULL;
+	return store_new;
+}
+
+void random_struct_innit(){
+	int i = 0;
+	int n = 0;
+	system("clear");
+	printf("How many stores do you want to create?\n");
+	input_validation(&n, INT_MAX - 10, 1);
+	for(int i = 0; i < n; i++){
+		if(struct_type == 1)
+			add_store(new_random_store());
+		else if(struct_type == 2){
+			add_store_array(new_random_store_array());// creat func
+		}
+	}
+	system("clar");
+	sleep(TIME_SET);
+	printf("Store(s) created!\n");
+	if(struct_type == 1)
+			print_all_stores();
+		else if(struct_type == 2){
+			print_all_stores_array();// create func
+		}
+}
+
 
 void	sotre_innit(){
 	t_store *store_new = safe_malloc(sizeof(t_store));
