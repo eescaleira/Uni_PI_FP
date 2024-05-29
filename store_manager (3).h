@@ -200,4 +200,62 @@ t_store *employ_count_order_reverse()
     return store;
 }
 
+t_store *alphabetic_order()
+{
+    if (!store) // Verificar se a store está vazia
+        return NULL; 
+
+    int swapped;
+    t_store *aux;
+    do
+    {
+        swapped = 0;
+        aux = store;
+        while (aux->next != NULL)
+        {
+            if (strcmp(aux->name, aux->next->name) > 0)
+            {
+                swap(aux, aux->next);
+                swapped = 1;
+            }
+            else
+            {
+                aux = aux->next;
+            }
+        }
+    } while (swapped);
+
+    store = find_head(store);
+    return store;
+}
+
+t_store *alphabetic_order_reverse()
+{
+    if (!store) // Verificar se a store está vazia
+        return NULL; 
+
+    int swapped;
+    t_store *aux;
+    do
+    {
+        swapped = 0;
+        aux = store;
+        while (aux->next != NULL)
+        {
+            if (strcmp(aux->name, aux->next->name) < 0)
+            {
+                swap(aux, aux->next);
+                swapped = 1;
+            }
+            else
+            {
+                aux = aux->next;
+            }
+        }
+    } while (swapped);
+
+    store = find_head(store);
+    return store;
+}
+
 #endif
