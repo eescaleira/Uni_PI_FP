@@ -25,7 +25,7 @@ int print_store_by_id(){
 	t_store *temp = id_order();
 	printf("Enter the id of the store you want to print: ");
 	while(id <= 0)
-		scanf("%lli", id);
+		scanf("%lli", &id);
 	system("clear");
 	if ((temp = store_id_exists(id)) != NULL)
 		print_store(temp);
@@ -41,7 +41,7 @@ int print_active_store(){ // uses linear search
 	system("clear");
 	for(t_store *temp = store; temp != NULL; temp = temp->next)
 		if(temp->is_active)
-			print_sttore(temp);
+			print_store(temp);
 	sleep(TIME_SET);
 	system("clear");
 	menu_1_handle();
@@ -50,24 +50,23 @@ int print_active_store(){ // uses linear search
 
 // ai generated based on remove_active_store
 int print_inactive_stores(){ // uses linear search
-	bool store_found = false;
 	system("clear");
 	for(t_store *temp = store; temp != NULL; temp = temp->next)
 		if(!temp->is_active){
 			print_store(temp);
 		}
-	sleepf(TIME_SET);
+	sleep(TIME_SET);
 	system("clear");
 	menu_1_handle();
 	return 0;
 }
 
 int print_w_less_employ_store(){ // uses linear search
-	t_store *temp = employ_count_order_reverse();
+	employ_count_order_reverse();
 	int employ = 0;
 	printf("Enter the number of employees: ");
 	while(employ <= 0)
-		scanf("%i", employ);
+		scanf("%i", &employ);
 	system("clear");
 	for(t_store *temp = store; temp != NULL; temp = temp->next)
 		if(temp->employ_count < employ){
@@ -84,11 +83,11 @@ int print_w_less_employ_store(){ // uses linear search
 }
 
 int print_w_more_employ_store(){ // uses linear search
-	t_store *temp = employ_count_order();
+	employ_count_order();
 	int employ = 0;
 	printf("Enter the number of employees: ");
 	while(employ <= 0)
-		scanf("%i", employ);
+		scanf("%i", &employ);
 	system("clear");
 	for(t_store *temp = store; temp != NULL; temp = temp->next)
 		if(temp->employ_count > employ){

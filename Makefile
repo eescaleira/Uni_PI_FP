@@ -7,11 +7,11 @@ SRC = main.c \
 		data_innit.c \
 		exit_funcs.c \
 		menu_1_rmv_func.c \
-		menu_2_print_funcs \
-		menu_3_PRINT_funcs.c \
+		menu_3_print_funcs.c \
 		menu_input_hand.c \
 		menu_print.c \
-		suport_funcs.c
+		suport_funcs.c \
+		menu_2_print_funcs.c
 		 
 
 SRC_PATH = ./src/

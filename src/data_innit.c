@@ -6,9 +6,10 @@ t_store *store_innit(){
 	get_store_id(store_new);
 	get_store_state(store_new);
 	get_store_employ(store_new);
-	store->previous = NULL;
+	store_new->previous = NULL;
 	store_new->next = NULL;
 	add_store(store_new);
+	return store_new;
 }
 
 t_store *new_random_store(){
@@ -23,26 +24,16 @@ t_store *new_random_store(){
 }
 
 void random_struct_innit(){
-	int i = 0;
 	int n = 0;
 	system("clear");
 	printf("How many stores do you want to create?\n");
 	input_validation(&n, INT_MAX - 10, 1);
-	for(int i = 0; i < n; i++){
-		if(struct_type == 1)
+	for(int i = 0; i < n; i++)
 			add_store(new_random_store());
-		else if(struct_type == 2){
-			add_store_array(new_random_store_array());// creat func
-		}
-	}
 	system("clar");
 	sleep(TIME_SET);
 	printf("Store(s) created!\n");
-	if(struct_type == 1)
-			print_all_stores();
-		else if(struct_type == 2){
-			print_all_stores_array();// create func
-		}
+	print_all_stores();
 }
 
 

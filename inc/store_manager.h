@@ -28,14 +28,12 @@ typedef struct s_store{
 }		t_store;
 
 /* global varaibeles */
-int struct_type = 0;
-t_store *store = NULL;
-t_store *store_stack = NULL;
+t_store *store;
 /* main function */
 int		main();
 
 /* data innit */
-void	sotre_innit();
+t_store *store_innit();
 t_store *new_random_store();
 void	random_struct_innit();
 char	*mkrndstr(size_t length);
@@ -95,6 +93,8 @@ void 	get_store_id(t_store *new_store);
 void 	get_store_employ(t_store *new_store);
 void 	get_store_state(t_store *new_store);
 void 	print_store(t_store *store);
+void	swap(t_store *a, t_store *b);
+t_store *find_head(t_store *no); // Função auxiliar para verificar a cabeça da lista
 
 /* exit funcs */
 void	exit_message(char *message, int status);

@@ -68,7 +68,7 @@ int remove_inactive_stores(){ // uses linear search
 	system("clear");
 	for(t_store *temp = store; temp != NULL; temp = temp->next){
 		if(!temp->is_active){
-			remove_store(temp);
+			remove_nodle(temp);
 			if(!store_found)
 				store_found = true;
 		}
