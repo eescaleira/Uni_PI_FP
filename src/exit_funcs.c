@@ -1,6 +1,6 @@
 #include "../inc/store_manager.h"
 
-void exit_message(char *message, int status){
+void exit_message(t_store *store, char *message, int status){
 	if(NULL != store)
 	{
 		while (NULL != store->next)

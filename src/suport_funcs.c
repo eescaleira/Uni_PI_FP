@@ -9,16 +9,16 @@ void *safe_malloc(size_t size)
 		return NULL;	
 	ptr = malloc(size);
 	if (!ptr)
-		exit_message("Error: malloc failed\n", -1);
+		exit_message(NULL, "Error: malloc failed\n", -1);
 	return (ptr);
 }
 
 void input_validation(int *i, int max, int min){
-	while (*i > max || *i < min){
+	do{
 		scanf("%i", i);
 		if(*i > max || *i < min)
 			printf("Invalid input, please try again!\n");
-	}
+	}while (*i > max || *i < min);
 }
 
 int get_element_count(t_store *list){
@@ -31,7 +31,7 @@ int get_element_count(t_store *list){
 	return count;
 }
 
-t_store *get_elemnet_by_index(int index, t_store *start, t_store *end){
+t_store *get_element_by_index(int index, t_store *start, t_store *end){
 	t_store *temp = start;
 	int i = 0;
 	while (NULL != temp || temp != end){
@@ -51,29 +51,29 @@ t_store *get_last_store(t_store *store){
 }
 
 //ai generated
-void get_store_name(t_store *new_store){
-	char *name = NULL;
+void get_store_name(t_store *new_store, t_store *store){
 	printf("Please enter the store name: ");
-	while (NULL != store_name_exists(name))
-	{
-		scanf("%s", name);
-		if (NULL != store_name_exists(name))
-			printf("Store name already exists, please try again!\n");
+	char name[50];
+	scanf("%s", name);
+	if (NULL != store_name_exists(name, store)){
+		printf("Store name already exists, please try again!\n");
+		get_store_name(new_store, store);
 	}
 	new_store->name = name;
 }
 
 //ai generated
-void get_store_id(t_store *new_store){
+void get_store_id(t_store *new_store, t_store *store){
 	long long int id = 0;
 	printf("Please enter the store id: ");
-	while(id <= 0 && NULL != store_id_exists(id))
-	{
-		scanf("%lli", &id);
-		if(id <= 0)
-			printf("Invalid id, please try again!\n");
-		else if(NULL != store_id_exists(id))
-			printf("Id already exists, please try again!\n");
+	scanf("%lli", &id);
+	if(id <= 0){
+		printf("Invalid id, please try again!\n");
+		get_store_id(new_store, store);
+	}
+	else if(NULL != store_id_exists(id, store)){
+		printf("Id already exists, please try again!\n");
+		get_store_id(new_store, store);
 	}
 	new_store->id = id;
 }
@@ -95,18 +95,20 @@ void get_store_state(t_store *new_store){
 }
 
 //ai generated
-void add_store(t_store *store_new){
+void add_store(t_store *store_new, t_store *store){
 	if(NULL == store_new)
 		return ;
-	if(NULL == store)
+	if(NULL == store){
 		store = store_new;
+		// printf("case 2\n");
+	}
 	else{
 		store_new->previous = get_last_store(store);
 		get_last_store(store)->next = store_new;
 	}
 }
 
-void remove_nodle(t_store *rmv_store){
+void remove_nodle(t_store *rmv_store, t_store *store){
 	if(NULL == store)// case main list is empty
 		return;
 	if(NULL == store->next){ // case element is the only one in the list
@@ -123,6 +125,8 @@ void remove_nodle(t_store *rmv_store){
 }
 
 void print_store(t_store *store){
+	if(NULL == store)
+		return;
 	printf("|___________________________|\n");
 	printf("|Store name: %s|\n", store->name);
 	printf("|Store id: %lli|\n", store->id);
@@ -133,12 +137,14 @@ void print_store(t_store *store){
 
 t_store *find_head(t_store *no) // Função auxiliar para verificar a cabeça da lista
 {
+	if(!no)
+		return NULL;
     while (no && no->previous != NULL)
         no = no->previous;
     return no;
 }
 
-void swap(t_store *a, t_store *b) // Função auxiliar para fazer as trocas
+void swap(t_store *a, t_store *b, t_store *store) // Função auxiliar para fazer as trocas
 {
     t_store *prev_a = a->previous;
     t_store *next_b = b->next;

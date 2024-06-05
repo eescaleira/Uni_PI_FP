@@ -1,7 +1,7 @@
 NAME = store_manager
 
 CC = cc 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 SRC = main.c \
 		algorythms.c \
 		data_innit.c \
@@ -30,3 +30,11 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c | $(OBJ_PATH)
 
 $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
+
+clean:
+	rm -rf $(OBJ_PATH)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all

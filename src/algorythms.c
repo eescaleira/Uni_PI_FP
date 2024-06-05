@@ -1,8 +1,10 @@
 #include "../inc/store_manager.h"
 
-t_store *store_name_exists(char *name){ // uses binary search to check for a string in list of structs
+t_store *store_name_exists(char *name, t_store *store){ // uses binary search to check for a string in list of structs
 	int list_size = get_element_count(store);
-	t_store *end = get_last_store(store), *start = store, *temp = get_element_by_index(list_size/2, start, end);
+    if(list_size == 0)
+        return NULL;
+    t_store *end = get_last_store(store), *start = store, *temp = get_element_by_index(list_size/2, start, end);
 	if(NULL == name)
 		return NULL;
 	for (int i = 0; NULL != temp; i++){
@@ -22,9 +24,11 @@ t_store *store_name_exists(char *name){ // uses binary search to check for a str
 	return NULL;
 }
 
-t_store *store_id_exists(long long int id){ // uses binary search to check for a id in list of structs
+t_store *store_id_exists(long long int id, t_store *store){ // uses binary search to check for a id in list of structs
 	int list_size = get_element_count(store);
-	t_store *end = get_last_store(store), *start = store, *temp = get_element_by_index(list_size/2, start, end);
+	if(list_size == 0)
+        return NULL;
+    t_store *end = get_last_store(store), *start = store, *temp = get_element_by_index(list_size/2, start, end);
 	if(0 == id)
 		return NULL;
 	for (int i = 0; NULL != temp; i++){
@@ -45,13 +49,13 @@ t_store *store_id_exists(long long int id){ // uses binary search to check for a
 }
 
 
-t_store *id_order()
+t_store *id_order(t_store *store)
 {
     if (!store) // Verificar se a store está vazia
         return NULL;
 
-    int swapped;
-    t_store *aux;
+    int swapped = 0;
+    t_store *aux = NULL;
     do
     {
         swapped = 0;
@@ -60,7 +64,7 @@ t_store *id_order()
         {
             if (aux->id > aux->next->id)
             {
-                swap(aux, aux->next);
+                swap(aux, aux->next, store);
                 swapped = 1;
             }
             else
@@ -72,13 +76,13 @@ t_store *id_order()
     return store;
 }
 
-t_store *id_order_reverse()
+t_store *id_order_reverse(t_store *store)
 {
     if (!store) // Verificar se a store está vazia
         return NULL;
 
     int swapped;
-    t_store *aux;
+    t_store *aux = NULL;
     do
     {
         swapped = 0;
@@ -87,7 +91,7 @@ t_store *id_order_reverse()
         {
             if (aux->id < aux->next->id)
             {
-                swap(aux, aux->next);
+                swap(aux, aux->next, store);
                 swapped = 1;
             }
             else
@@ -99,7 +103,7 @@ t_store *id_order_reverse()
     return store;
 }
 
-t_store *employ_count_order()
+t_store *employ_count_order(t_store *store)
 {
     if (!store) // Verificar se a store está vazia
         return NULL;
@@ -114,7 +118,7 @@ t_store *employ_count_order()
         {
             if (aux->employ_count < aux->next->employ_count)
             {
-                swap(aux, aux->next);
+                swap(aux, aux->next, store);
                 swapped = 1;
             }
             else
@@ -128,7 +132,7 @@ t_store *employ_count_order()
     return store;
 }
 
-t_store *employ_count_order_reverse()
+t_store *employ_count_order_reverse(t_store *store)
 {
     if (!store) // Verificar se a store está vazia
         return NULL;
@@ -143,7 +147,7 @@ t_store *employ_count_order_reverse()
         {
             if (aux->employ_count > aux->next->employ_count)
             {
-                swap(aux, aux->next);
+                swap(aux, aux->next, store);
                 swapped = 1;
             }
             else
@@ -157,7 +161,7 @@ t_store *employ_count_order_reverse()
     return store;
 }
 
-t_store *alphabetic_order()
+t_store *alphabetic_order(t_store *store)
 {
     if (!store) // Verificar se a store está vazia
         return NULL; 
@@ -172,7 +176,7 @@ t_store *alphabetic_order()
         {
             if (strcmp(aux->name, aux->next->name) > 0)
             {
-                swap(aux, aux->next);
+                swap(aux, aux->next, store);
                 swapped = 1;
             }
             else
@@ -184,7 +188,7 @@ t_store *alphabetic_order()
     return store;
 }
 
-t_store *alphabetic_order_reverse()
+t_store *alphabetic_order_reverse(t_store *store)
 {
     if (!store) // Verificar se a store está vazia
         return NULL; 
@@ -199,7 +203,7 @@ t_store *alphabetic_order_reverse()
         {
             if (strcmp(aux->name, aux->next->name) < 0)
             {
-                swap(aux, aux->next);
+                swap(aux, aux->next, store);
                 swapped = 1;
             }
             else

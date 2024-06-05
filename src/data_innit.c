@@ -1,55 +1,43 @@
 #include "../inc/store_manager.h"
 
-t_store *store_innit(){
-	t_store *store_new = safe_malloc(sizeof(t_store));
-	get_store_name(store_new);
-	get_store_id(store_new);
+void	store_innit(t_store *store){
+	t_store *store_new = (t_store *)safe_malloc(sizeof(t_store));
+	get_store_name(store_new, store);
+	get_store_id(store_new, store);
 	get_store_state(store_new);
 	get_store_employ(store_new);
 	store_new->previous = NULL;
 	store_new->next = NULL;
-	add_store(store_new);
-	return store_new;
+	print_store(store_new);
+	add_store(store_new, store);
+	printf("Store created!\n");
+	sleep(2);
+	return ;
 }
 
-t_store *new_random_store(){
+t_store *new_random_store(t_store *store){
 	t_store *store_new = safe_malloc(sizeof(t_store));
-	while(NULL != store_name_exists(store_new->name = mkrndstr(random_number(5, 10)))); // will work?
-	while(NULL != store_id_exists(store_new->id = random_number(1, INT_MAX - 10)));  // will work?
+	while(NULL != store_name_exists(store_new->name = mkrndstr(random_number(5, 10)), store)); // will work?
+	while(NULL != store_id_exists(store_new->id = random_number(1, INT_MAX - 10), store));  // will work?
 	store_new->employ_count = random_number(1,INT_MAX - 10);
 	store_new->is_active = random_number(0, 1);
 	store_new->next = NULL;
 	store_new->previous = NULL;
+	sleep(2);
 	return store_new;
 }
 
-void random_struct_innit(){
+void random_struct_innit(t_store *store){
 	int n = 0;
 	system("clear");
 	printf("How many stores do you want to create?\n");
 	input_validation(&n, INT_MAX - 10, 1);
 	for(int i = 0; i < n; i++)
-			add_store(new_random_store());
+			add_store(new_random_store(store), store);
 	system("clar");
 	sleep(TIME_SET);
 	printf("Store(s) created!\n");
-	print_all_stores();
-}
-
-
-void	sotre_innit(){
-	t_store *store_new = safe_malloc(sizeof(t_store));
-	get_store_name(store);// create func
-	get_store_id(store);// create func
-	get_store_state(store);	// create func
-	get_store_employ(store);// create func
-	store_new->next = NULL;
-	if(NULL == store)
-		store = store_new;
-	else{
-		store_new->previous = get_last_store(store);
-		store->next = store_new;
-	}
+	print_all_stores(store);
 }
 
 //source: https://stackoverflow.com/questions/822323/how-to-generate-a-random-int-in-c

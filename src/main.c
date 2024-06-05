@@ -3,7 +3,8 @@
 // ai genereated
 
 int	main(){
+	t_store *store = NULL;
 	printf("Welcome to the store manager!\n\n");
-	main_menu_handle();
+	main_menu_handle(store);
 	return 0;
 }

@@ -1,125 +1,128 @@
 #include "../inc/store_manager.h"
 
-void main_menu_handle(){
+void main_menu_handle(t_store *store){
 	int i = -1;
 	print_main_menu();
 	input_validation(&i, 5, 0);
 	switch (i){
 		case 0:
-			random_struct_innit();
-			CLEAR;
-			main_menu_handle();
+			random_struct_innit(store);
 			break;
 		case 1:
-			store_innit();
+			CLEAR;
+			store_innit(store);
 			break;
 		case 2:
-			menu_1_handle();
+			menu_1_handle(store);
 			break;
 		case 3:
-			menu_2_handle();
+			menu_2_handle(store);
 			break;
 		case 4:
-			menu_3_handle();
+			menu_3_handle(store);
 			break;
 		case 5:
-			CLEAR;
-			exit_message("Program terminated by your command!\nGoodbye!", 0);
+			CLEAR_TIMED;
+			exit_message(store, "Program terminated by your command!\nGoodbye!", 0);
 			break;
 		default:
 			break;
 	}
+	CLEAR;
+	main_menu_handle(store);
 }
 
-void menu_1_handle(){ // create func
+void menu_1_handle(t_store *store){ // create func
 	int i = -1;
 	print_menu_1();
 	input_validation(&i, 6, 1);// define limits
 	switch (i){
 		case 1:
-			rmv_store_name();// rmv a store by name if exist
+			rmv_store_name(store);// rmv a store by name if exist
 			break;
 		case 2:
-			rmv_store_id();// rmv a store by name if exist
+			rmv_store_id(store);// rmv a store by name if exist
 			break;
 		case 3:
-			remove_active_store(); // uses linear search			
+			remove_active_store(store); // uses linear search			
 			break;
 		case 4:
-			remove_inactive_stores(); // uses linear search
+			remove_inactive_stores(store); // uses linear search
 			break;
 		case 5:
-			rmv_w_less_employ_store(); // uses linear search
+			rmv_w_less_employ_store(store); // uses linear search
 			break;
 		case 6:
-			rmv_w_more_employ_store(); // uses linear search
+			rmv_w_more_employ_store(store); // uses linear search
 			break;
 		case 7:
 			// rmv_all_stores(); // create func
 			break;
 		case 8:
-			system("clear");
-			main_menu_handle();
+			CLEAR;
+			main_menu_handle(store);
 			break;
 		default:
 			break;
 	}
 }
 
-void menu_2_handle(){
+void menu_2_handle(t_store *store){
 	int i = -1;
 	print_menu_2();
 	input_validation(&i, 6, 1);
 	switch (i){
 		case 1:
-			print_all_stores(); // create func
+			print_all_stores(store); // create func
 			break;
 		case 2:
-			print_alphabetic_order(); 
+			print_alphabetic_order(store); 
 			break;
 		case 3:
-			print_alphabetic_order_reverse(); // create func
+			print_alphabetic_order_reverse(store); // create func
 			break;
 		case 4:
-			print_by_employ_count_descendent(); // create func
+			print_by_employ_count_descendent(store); // create func
 			break;
 		case 5:
-			print_by_employ_count_ascendent(); // create func
+			print_by_employ_count_ascendent(store); // create func
 			break;
 		case 6:
 			system("clear");
-			main_menu_handle();
+			main_menu_handle(store);
 		default:
 			break;
 	}
+	CLEAR;
+	menu_2_handle(store);
 }
 
-void menu_3_handle(){
+void menu_3_handle(t_store *store){
 	int i = -1;
 	print_menu_3();
 	input_validation(&i, 6, 1);
 	switch (i){
 		case 1:
-			print_store_by_name(); // create func
+			print_store_by_name(store); // create func
 			break;
 		case 2:
-			print_store_by_id(); // create func
+			print_store_by_id(store); // create func
 			break;
 		case 3:
-			print_active_store(); // create func
+			print_active_store(store); // create func
 			break;
 		case 4:
-			print_inactive_stores(); // create func
+			print_inactive_stores(store); // create func
 			break;
 		case 5:
-			print_by_employ_count_descendent(); // create func
+			print_by_employ_count_descendent(store); // create func
 			break;
 		case 6:
-			print_by_employ_count_ascendent(); // create func
+			print_by_employ_count_ascendent(store); // create func
 			break;
 		case 7:
 			system("clear");
-			main_menu_handle();
+			main_menu_handle(store);
 		default:
 			break;
 	}
